@@ -30,7 +30,7 @@ client.on('ready' , () => {
 
 let conversation = [];
 
-client.on("messageCreate", message => {
+client.on('messageCreate', message => {
     if (message.author.bot) return false;
     if (message.mentions.has(client.user.id)) {
         let text = message.content;
