@@ -17,6 +17,19 @@ const client = new Client({
 client.on('ready' , () => {
     console.log('The bot is reddy');
 
+    const activities = [
+        'Learning',
+        'Buidling',
+        'Thinking about Donye',
+        'Sleeping',
+        'GMing'
+    ];
+
+    setInterval(() => {
+        const status = activities[Math.floor(Math.random() * activities.length)];
+        client.user.setPresence({ activities: [{ name: `${status}`}]});
+    }, 3600000);
+
     mongoose.connect(process.env.MONGO_URI, {
         keepAlive: true
     })
