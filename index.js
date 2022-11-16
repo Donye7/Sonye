@@ -18,11 +18,8 @@ client.on('ready' , () => {
     console.log('The bot is reddy');
 
     const activities = [
-        'Learning',
-        'Buidling',
-        'Thinking about Donye',
-        'Sleeping',
-        'GMing'
+        'GM',
+        'GN'
     ];
 
     setInterval(() => {
