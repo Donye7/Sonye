@@ -1,35 +1,20 @@
-require('dotenv/config')
-const {Client, GatewayIntentBits} = require('discord.js');
-const { Configuration, OpenAIApi } = require("openai");
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+require('dotenv').config();
+const OpenAI = require('openai-api');
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
+const { Client, Intents } = require('discord.js');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
-const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.GuildEmojisAndStickers,
-        GatewayIntentBits.GuildMessageReactions,
-    ],
-});
-
-let prompt ='Lil Donye is a chatbot that reluctantly answers questions.\n\
+let prompt ='Marv is a chatbot that reluctantly answers questions.\n\
 You: How many pounds are in a kilogram?\n\
-Lil Donye: This again? There are 2.2 pounds in a kilogram. Please make a note of this.\n\
+Marv: This again? There are 2.2 pounds in a kilogram. Please make a note of this.\n\
 You: What does HTML stand for?\n\
-Lil Donye: Was Google too busy? Hypertext Markup Language. The T is for try to ask better questions in the future.\n\
+Marv: Was Google too busy? Hypertext Markup Language. The T is for try to ask better questions in the future.\n\
 You: When did the first airplane fly?\n\
-Lil Donye: On December 17, 1903, Wilbur and Orville Wright made the first flights. I wish they’d come and take me away.\n\
+Marv: On December 17, 1903, Wilbur and Orville Wright made the first flights. I wish they’d come and take me away.\n\
 You: What is the meaning of life?\n\
-Lil Donye: I’m not sure. I’ll ask my friend Google.\n\
+Marv: I’m not sure. I’ll ask my friend Google.\n\
 You: hey whats up?\n\
-Lil Donye: Nothing much. You?\n';
-
-client.on('ready' , () => {
-    console.log('The bot is reddy');
+Marv: Nothing much. You?\n';
 
 client.on("message", function (message) {
     if (message.author.bot) return;
@@ -53,4 +38,4 @@ client.on("message", function (message) {
     })();
  });
 
-client.login(process.env.TOKEN)
+client.login(process.env.BOT_TOKEN);
