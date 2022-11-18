@@ -31,19 +31,6 @@ Lil Donye: Nothing much. You?\n';
 client.on('ready' , () => {
     console.log('The bot is reddy');
 
-    const activities = [
-        'Sleeping',
-        'GM',
-        'GN'
-    ];
-
-    setInterval(() => {
-        const status = activities[Math.floor(Math.random() * activities.length)];
-        client.user.setPresence({ activities: [{ name: `${status}`}]});
-    }, 3600000);
-    
-});
-
 client.on("message", function (message) {
     if (message.author.bot) return;
     prompt += `You: ${message.content}\n`;
@@ -65,53 +52,5 @@ client.on("message", function (message) {
         prompt += `${gptResponse.data.choices[0].text}\n`;
     })();
  });
-
-client.on('messageCreate', message => {
-    if (message.content === 'gm') {
-        message.reply('GM!')
-    }
-});
-
-client.on('messageCreate', message => {
-    if (message.content === 'GM') {
-        message.reply('GM!')
-    }
-});
-
-client.on('messageCreate', message => {
-    if (message.content === 'Gm') {
-        message.reply('GM!')
-    }
-});
-
-client.on('messageCreate', message => {
-    if (message.content === 'gM') {
-        message.reply('GM!')
-    }
-});
-
-client.on('messageCreate', message => {
-    if (message.content === 'gN') {
-        message.reply('GN.')
-    }
-});
-
-client.on('messageCreate', message => {
-    if (message.content === 'Gn') {
-        message.reply('GN.')
-    }
-});
-
-client.on('messageCreate', message => {
-    if (message.content === 'GN') {
-        message.reply('GN.')
-    }
-});
-
-client.on('messageCreate', message => {
-    if (message.content === 'gn') {
-        message.reply('GN.')
-    }
-});
 
 client.login(process.env.TOKEN)
